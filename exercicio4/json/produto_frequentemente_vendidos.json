@@ -1,0 +1,74 @@
+[
+    {
+        "produto": "Banana",
+        "quantidade_vendida": 4
+    },
+    {
+        "produto": "Bolacha",
+        "quantidade_vendida": 3
+    },
+    {
+        "produto": "Bolacha",
+        "quantidade_vendida": 3
+    },
+    {
+        "produto": "Carne",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Cerveja",
+        "quantidade_vendida": 12
+    },
+    {
+        "produto": "Detergente",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Laranja",
+        "quantidade_vendida": 4
+    },
+    {
+        "produto": "Macarr\u00e3o",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Macarr\u00e3o",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Ma\u00e7\u00e3",
+        "quantidade_vendida": 3
+    },
+    {
+        "produto": "Mortadela",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Mortadela",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Mortadela",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Mortadela",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Refrigerante",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Refrigerante",
+        "quantidade_vendida": 2
+    },
+    {
+        "produto": "Sabonete",
+        "quantidade_vendida": 3
+    },
+    {
+        "produto": "Tomate",
+        "quantidade_vendida": 2
+    }
+]
