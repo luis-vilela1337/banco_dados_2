@@ -1,6 +1,4 @@
-from typing import Collection
 import pymongo # pip install pymongo
-
 
 
 class Database:
@@ -9,7 +7,7 @@ class Database:
 
     def connect(self, database, collection):
         try:
-            connectionString = "localhost:27018"
+            connectionString = "mongodb+srv://root:root@batata.0ldpz6w.mongodb.net/test"
             self.clusterConnection = pymongo.MongoClient(
                 connectionString,
                 tlsAllowInvalidCertificates=True
@@ -20,4 +18,9 @@ class Database:
         except Exception as e:
             print(e)
 
-   
+    def resetDatabase(self):
+        try: 
+            self.db.drop_collection(self.collection)
+            print("Banco de dados resetado com sucesso!")
+        except Exception as e:
+            print(e)
