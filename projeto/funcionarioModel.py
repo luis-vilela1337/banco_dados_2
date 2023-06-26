@@ -5,12 +5,11 @@ from bson.objectid import ObjectId
 class FuncionarioModel:
     def __init__(self, database):
         self.db = database
-        self.collection = self.db.funcionarios
 
     def create_funcionario(self, nome: str, cargo: str, salario: float):
         try:
             funcionario = {"nome": nome, "cargo": cargo, "salario": salario}
-            res = self.collection.insert_one(funcionario)
+            res = self.db.collection.insert_one(funcionario)
             print(f"Funcionário criado com ID: {res.inserted_id}")
             return res.inserted_id
         except Exception as e:
@@ -19,14 +18,14 @@ class FuncionarioModel:
 
     def read_funcionario_by_id(self, id: str):
         try:
-            funcionario = self.collection.find_one({"_id": ObjectId(id)})
+            funcionario = self.db.collection.find_one({"_id": ObjectId(id)})
             print(f"Funcionário encontrado: {funcionario}")
             return funcionario
         except Exception as e:
             print(f"Ocorreu um erro ao ler o funcionário: {e}")
             return None
 
-    def update_funcionario(self, id: str, nome: str = None, cargo: str = None, salario: float = None, departamento_id: str = None):
+    def update_funcionario(self, id: str, nome: str = None, cargo: str = None, salario: float = None):
         try:
             query = {"_id": ObjectId(id)}
             update = {"$set": {}}
@@ -36,10 +35,8 @@ class FuncionarioModel:
                 update["$set"]["cargo"] = cargo
             if salario:
                 update["$set"]["salario"] = salario
-            if departamento_id:
-                update["$set"]["departamento_id"] = departamento_id
 
-            res = self.collection.update_one(query, update)
+            res = self.db.collection.update_one(query, update)
             print(f"Funcionário atualizado: {res.modified_count} documento(s) modificados")
             return res.modified_count
         except Exception as e:
@@ -48,7 +45,7 @@ class FuncionarioModel:
 
     def delete_funcionario(self, id: str):
         try:
-            res = self.collection.delete_one({"_id": ObjectId(id)})
+            res = self.db.collection.delete_one({"_id": ObjectId(id)})
             print(f"Funcionário deletado: {res.deleted_count} documento(s) deletados")
             return res.deleted_count
         except Exception as e:
