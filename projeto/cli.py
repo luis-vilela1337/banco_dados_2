@@ -7,6 +7,8 @@ class SimpleCLI:
 
     def run(self):
         while True:
+            print("Bem-vindo à CLI da Empresa!")
+            print("Comandos disponíveis: criar_funcionario, ler_funcionario, atualizar_funcionario, excluir_funcionario, criar_departamento, ler_departamento, atualizar_departamento, excluir_departamento, quit")
             command = input("Digite um comando: ")
             if command == "quit":
                 print("Até logo!")
@@ -34,8 +36,7 @@ class EmpresaCLI(SimpleCLI):
         nome = input("Digite o nome: ")
         cargo = input("Digite o cargo: ")
         salario = float(input("Digite o salário: "))
-        departamento_id = input("Digite o ID do departamento: ")
-        self.funcionario_model.create_funcionario(nome, cargo, salario, departamento_id)
+        self.funcionario_model.create_funcionario(nome, cargo, salario)
 
     def ler_funcionario(self):
         id = input("Digite o ID: ")
@@ -44,15 +45,13 @@ class EmpresaCLI(SimpleCLI):
             print(f"Nome: {funcionario['nome']}")
             print(f"Cargo: {funcionario['cargo']}")
             print(f"Salário: {funcionario['salario']}")
-            print(f"ID do Departamento: {funcionario['departamento_id']}")
 
     def atualizar_funcionario(self):
         id = input("Digite o ID: ")
         nome = input("Digite o nome (deixe em branco para pular): ")
         cargo = input("Digite o cargo (deixe em branco para pular): ")
         salario = input("Digite o salário (deixe em branco para pular): ")
-        departamento_id = input("Digite o ID do departamento (deixe em branco para pular): ")
-        self.funcionario_model.update_funcionario(id, nome, cargo, salario, departamento_id)
+        self.funcionario_model.update_funcionario(id, nome, cargo, salario)
 
     def excluir_funcionario(self):
         id = input("Digite o ID: ")
@@ -61,7 +60,9 @@ class EmpresaCLI(SimpleCLI):
     def criar_departamento(self):
         nome = input("Digite o nome: ")
         localizacao = input("Digite a localização: ")
-        self.departamento_model.create_departamento(nome, localizacao)
+        a=str(input("Numero de funcionarios:-"))
+        funcionario_ids=list(map(str, input("Funcionarios:-").strip().split()))
+        self.departamento_model.create_departamento(nome, localizacao, funcionario_ids)
 
     def ler_departamento(self):
         id = input("Digite o ID: ")
@@ -75,12 +76,10 @@ class EmpresaCLI(SimpleCLI):
         id = input("Digite o ID: ")
         nome = input("Digite o nome (deixe em branco para pular): ")
         localizacao = input("Digite a localização (deixe em branco para pular): ")
-        self.departamento_model.update_departamento(id, nome, localizacao)
+        a=str(input("Numero de funcionarios:-"))
+        funcionario_ids=list(map(str, input("Funcionarios:-").strip().split()))
+        self.departamento_model.update_departamento(id, nome, localizacao,funcionario_ids)
 
     def excluir_departamento(self):
         id = input("Digite o ID: ")
         self.departamento_model.delete_departamento(id)
-
-    def run(self):
-        print("Bem-vindo à CLI da Empresa!")
-        print("Comandos disponíveis: criar_funcionario, ler_funcionario, atualizar_funcionario, excluir_funcionario, criar_departamento, ler_departamento, atualizar_departamento, excluir_departamento")
