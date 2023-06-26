@@ -6,7 +6,7 @@ class DepartamentoModel:
         self.db = database
         self.collection = self.db.departamentos
 
-    def create_departamento(self, nome: str, localizacao: str):
+    def create_departamento(self, nome: str, localizacao: str, funcionarios: List[str]) -> None:
         try:
             departamento = {"nome": nome, "localizacao": localizacao, "funcionarios": []}
             res = self.collection.insert_one(departamento)
