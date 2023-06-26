@@ -8,7 +8,7 @@ class DepartamentoModel:
 
     def create_departamento(self, nome: str, localizacao: str, funcionarios: List[str]) -> None:
         try:
-            departamento = {"nome": nome, "localizacao": localizacao, "funcionarios": []}
+            departamento = {"nome": nome, "localizacao": localizacao, "funcionarios": funcionarios}
             res = self.collection.insert_one(departamento)
             print(f"Departamento criado com ID: {res.inserted_id}")
             return res.inserted_id

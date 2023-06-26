@@ -7,9 +7,9 @@ class FuncionarioModel:
         self.db = database
         self.collection = self.db.funcionarios
 
-    def create_funcionario(self, nome: str, cargo: str, salario: float, departamento_id: str):
+    def create_funcionario(self, nome: str, cargo: str, salario: float):
         try:
-            funcionario = {"nome": nome, "cargo": cargo, "salario": salario, "departamento_id": departamento_id}
+            funcionario = {"nome": nome, "cargo": cargo, "salario": salario}
             res = self.collection.insert_one(funcionario)
             print(f"Funcionário criado com ID: {res.inserted_id}")
             return res.inserted_id
