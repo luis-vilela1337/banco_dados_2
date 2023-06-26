@@ -26,7 +26,6 @@ class DepartamentoModel:
 
     def update_departamento(self, id: str, nome: str = None, localizacao: str = None, funcionarios= None) -> None:
         try:
-            print(funcionarios)
             query = {"_id": ObjectId(id)}
             update = {"$set": {}}
             if nome:
@@ -34,7 +33,6 @@ class DepartamentoModel:
             if localizacao:
                 update["$set"]["localizacao"] = localizacao
             if funcionarios:
-                print(funcionarios)
                 update["$set"]["funcionarios"] = funcionarios    
 
             res = self.db.collection.update_one(query, update)
